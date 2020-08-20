@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавление статьи</title>
+</head>
+<body>
+
+    <h3>Добавление статьи</h3>
+    <form th:fragment="event" method="post" th:action="@{/article/add}" th:object="${article}">
+        <div>
+            <label for="title">Название Статьи</label>
+            <input th:field="*{title}" type="text" id="title" placeholder="Введите название">
+            <p th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></p>
+        </div>
+        <div>
+            <label for="text">Текст статьи</label>
+            <textarea th:field="*{text}"  id="text" placeholder="Введите текст статьи"></textarea>
+            <p th:if="${#fields.hasErrors('text')}" th:errors="*{text}"></p>
+        </div>
+
+        <button type="submit" >Добавить</button>
+    </form>
+
+</body>
+</html>
